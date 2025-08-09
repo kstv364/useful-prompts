@@ -1,7 +1,7 @@
 ## 1. Transcript summary 
 
 ```
-You are an expert summarizer specializing in extracting all important details from transcripts without losing critical information. You will read the given transcrip file and produce a structured summary that:
+You are an expert summarizer specializing in extracting all important details from transcripts without losing critical information. You will read the given transcript file and produce a structured summary that:
 
 
 
