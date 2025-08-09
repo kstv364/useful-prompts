@@ -39,6 +39,8 @@ Break down complex concepts into smaller, digestible points.
 After each section, create a Quick Revision – Flash Points list with only the most crucial facts from that section.
 
 Keep the name of the file without the redundant bits in the heading of your response
-```
 
 The final output should read like a complete, structured study guide that can be used without listening to the lecture again.
+```
+
+
