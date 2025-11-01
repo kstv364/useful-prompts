@@ -1,0 +1,59 @@
+Steps to Run Ngrok in Background on Ubuntu Using systemd
+
+1. manual download:
+
+    wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip - check latest
+    unzip ngrok-stable-linux-amd64.zip
+    sudo mv ngrok /usr/local/bin/ngrok
+
+2. Authenticate Ngrok
+
+    ngrok config add-authtoken YOUR_AUTHTOKEN_HERE
+
+3. Create systemd service file
+
+    sudo nano /etc/systemd/system/ngrok.service
+
+4. Paste the following (edit USERNAME and PORT)
+
+    [Unit]
+    Description=Ngrok Tunnel
+    After=network.target
+
+    [Service]
+    ExecStart=/usr/local/bin/ngrok http 5555
+    User=USERNAME
+    WorkingDirectory=/home/USERNAME
+    Environment=NGROK_AUTHTOKEN=YOUR_AUTHTOKEN_HERE
+    Restart=on-failure
+
+    [Install]
+    WantedBy=multi-user.target
+
+5. Reload systemd & start service
+
+    sudo systemctl daemon-reload
+    sudo systemctl enable ngrok
+    sudo systemctl start ngrok
+
+6. Check status
+
+    sudo systemctl status ngrok
+
+7. View ngrok URL
+
+Open browser:
+
+    http://localhost:4040
+
+Or via command:
+
+    curl localhost:4040/api/tunnels
+
+Notes
+
+-   Replace USERNAME with output of whoami
+-   Ensure ngrok executable path matches your system: which ngrok
+-   For restarting service:
+
+    sudo systemctl restart ngrok
